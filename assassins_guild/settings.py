@@ -21,7 +21,7 @@ DEBUG = TEMPLATE_DEBUG = env('DEBUG', bool, False)
 DATABASES = {'default': env.db()}
 
 # Serving static media files
-STATIC_ROOT = root.path('static/')
+STATIC_ROOT = root('static/')
 
 # Security
 SECRET_KEY = env('SECRET_KEY')
