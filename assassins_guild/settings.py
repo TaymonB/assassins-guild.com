@@ -8,11 +8,14 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
+import os
+
 import environ
 
 root = environ.Path(__file__) - 2
 env = environ.Env()
-environ.Env.read_env()
+if 'DATABASE_URL' not in os.environ:
+    environ.Env.read_env(root('.env'))
 
 # Development vs. production mode
 DEBUG = TEMPLATE_DEBUG = env('DEBUG', bool, False)
